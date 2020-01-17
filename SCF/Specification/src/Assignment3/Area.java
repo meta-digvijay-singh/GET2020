@@ -10,7 +10,7 @@ public class Area {
      * @throw if width or height is less than zero.
      */
     public double areaOfTriangle(double width, double height) throws ArithmeticException {
-        if ((width < 0) || (height < 0)) {
+        if ((width <= 0) || (height <= 0)) {
             throw new ArithmeticException("Base or height can't be negative.");
         }
         
@@ -26,7 +26,7 @@ public class Area {
      * @throw if width or height is less than zero.
      */
     public double areaOfRectangle(double width, double height) throws ArithmeticException {
-        if ((width < 0) || (height < 0)) {
+        if ((width <= 0) || (height <= 0)) {
             throw new ArithmeticException("Length or breadth can't be negative");
         }
         
@@ -52,7 +52,7 @@ public class Area {
      * @throw if radius is less than zero.
      */
     public double areaOfCircle(double radius) throws ArithmeticException {
-        if (radius < 0) {
+        if (radius <= 0) {
             throw new ArithmeticException("Radius can't be negative.");
         }
         
