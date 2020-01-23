@@ -1,8 +1,13 @@
-package problem;
+package Assignment7;
 
 import java.util.Arrays;
 
-public final class SparseMatrix {
+interface ImmutableMatrix {
+    public int[][] transpose();
+    public boolean symmetric();
+}
+
+public final class SparseMatrix implements ImmutableMatrix {
 
     private final int row[];
     private final int column[];
@@ -15,7 +20,6 @@ public final class SparseMatrix {
 
     /**
      * constructor to reduce the matrix space and and convert matrix to row, column, value array   
-     * 
      * @param matrix the first {@code int[][]} to convert matrix to row, column, value array      
      * @param sparseMatrixRow the second {@code int} convert matrix to row, column, value array      
      * @param sparseMatrixColumn the third {@code int} convert matrix to row, column, value array   
