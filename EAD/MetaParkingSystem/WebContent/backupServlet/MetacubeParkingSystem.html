@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Metacube Parking System</title>
+    <link href="ParkingSystem.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.4.2.min.js"
+  		integrity="sha256-4joqTi18K0Hrzdj/wGed9xQOt/UuHuur+CeogYJkPFk="
+  		crossorigin="anonymous">
+    </script>
+    <script src="controller.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <h1>Welcome to Metacube Parking system.</h1>
+    <p style="padding: 10px;" id="registrationConfirmation"></p>
+    <div id="registrationForm" class="styleDiv">
+        <p class="regMessage">Registraion Details</p>
+        <form action = "saveIt" method = "post">
+            <input id="fullName" type="text" name="fullName" placeholder="Full Name">
+            <br><br>
+            <label for="male">Gender</label>
+            <label>
+                <input id="male" type="radio" name="gender">Male
+            </label>
+            <label>
+                <input id="female" type="radio" name="gender">Female
+            </label>
+            <br><br>
+            <input id="emailId" type="email" name="email" placeholder="Email Id">
+            <br><br>
+            <input id="password" type="password" name="password" placeholder="Password">
+            <br><br>
+            <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirm Password">
+            <br><br>
+            <input id="mobileNumber" type="text" name="mobileNumber" placeholder="Mobile Number">
+            <br><br>
+            <input type="button" value="Go" id = "ibutton" onclick = "register()"><br>
+        </form>
+    </div>
+
+    <div id="vehicleForm" class="styleDiv">
+        <p class="regMessage">Vehicle Details</p>
+        <form>
+            <input id="vehicleName" type="text" name="vehicleName" placeholder="Vehicle Name">
+            <br><br>
+            <label for="vehicleType">Vehicle Type</label>
+            <select id="vehicleType" name="typeOfVehicle">
+                <option value="Cycle">Cycle</option>
+                <option value="MotorCycle">MotorCycle</option>
+                <option value="Four Wheelers">Four Wheelers</option>
+            </select>
+            <input id="vehicleNumber" type="text" name="vehicleNumber" placeholder="Vehicle Number">
+            <br><br>
+            <label for="identification">Identification</label>
+            <textarea id="identification"></textarea>
+            <input type="button" value="Go" onclick="showPassesPrice()">
+            <br>
+        </form>
+    </div>
+
+    <div id="currencyForm" class="styleDiv">
+        <p class="regMessage">Price details</p>
+        <form>
+            <label>
+                <input id="dailyPrice" type="radio" name="price" value = "dailyPrice">Daily Pass -> 
+                <span id = "dailyPass"></span>
+                <span class = "unit"></span>
+            </label>
+            <br>
+            <label>
+                <input id="monthlyPrice" type="radio" name="price" value = "monthlyPrice">Monthly Pass -> 
+                <span id = "monthlyPass"></span>
+                <span class = "unit"></span>
+            </label>
+            <br>
+            <label>
+                <input id="yearlyPrice" type="radio" name="price" value = "yearlyPrice">Yearly Pass -> 
+                <span id = "yearlyPass"></span>
+                <span class = "unit"></span>
+            </label>
+            <br>
+            <select id="currencyType" name="typeOfCurrency">
+                <option value="YEN">YEN</option>
+                <option value="USD">USD</option>
+                <option value="INR">INR</option>
+            </select>
+            <input id = "changePrice" type="button" value="Change Price" onclick="convertPrice()"><br>
+        </form>
+    </div>
+
+</body>
+
+</html>
