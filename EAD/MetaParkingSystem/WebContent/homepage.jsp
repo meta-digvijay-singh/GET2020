@@ -31,35 +31,25 @@
 		}
 	%>
 
-	Welcome to homepage...<%= emp.getEmpFirstName() %>
+	Welcome to homepage... <%= emp.getEmpFirstName() %>
 	<form action = "logout">
 		<input type = "submit" value = "Logout">
 	</form>
-	<form action = "update" method = "post">
-		
-		<input type="hidden" name="employeeId" value="<%= emp.getEid() %>" readonly>
-		<label for = "firstName">First Name </label><br>
-		<input id="firstName" name="firstName" type="text" placeholder="First Name" value="<%=emp.getEmpFirstName()%>" readonly>
-		<input type = "button" onclick = "edit('firstName')" value = "edit"> <br>
-		<label for = "lastName">Last Name </label><br>
-		<input id="lastName" name="lastName" type="text" placeholder="Last Name" value="<%=emp.getEmpLastName()%>" readonly> 
-		<input type = "button" onclick = "edit('lastName')" value = "edit"> <br> 
-		<label for = "emailId">Email Id </label><br>
-		<input id="emailId" name="emailId" type="text" placeholder="Email Id" value="<%=emp.getEmailId()%>" readonly> 
-		<input type = "button" onclick = "edit('emailId')" value = "edit"> <br>
-		<label for = "password">Password </label><br>
-		<input id="password" name="password" type="text" placeholder="Password" value="<%=emp.getPassword()%>" readonly> 
-		<input type = "button" onclick = "edit('password')" value = "edit"> <br>
-		<label for = "mobileNumber">Mobile Number </label><br>
-		<input id="mobileNumber" name="mobileNumber" type="text" placeholder="Mobile Number" value="<%=emp.getMobileNumber()%>" readonly> 
-		<input type = "button" onclick = "edit('mobileNumber')" value = "edit"> <br>
-		<label for = "orgName">Organization Name </label><br>
-		<input id="orgName" name="orgName" type="text" placeholder="Organization Name" value="<%=emp.getOrgName()%>" readonly> 
-		<input type = "button" onclick = "edit('orgName')" value = "edit"> <br>
-		<input type = "submit" value = "update">
-	</form>
+	
 	<form action = "friend">
 		<input type = "submit" value = "friends">
+	</form>
+	
+	<form action = "personaldetails.jsp" method = "post">
+		<input type = "submit" value = "Show Personal Details">
+	</form>
+	
+	<form action = "vehicledetails.jsp" method = "post">
+		<input type = "submit" value = "Show Vehicle Details">
+	</form>
+	
+	<form action = "passdetails.jsp" method = "post">
+		<input type = "submit" value = "Show Pass Details">
 	</form>
 	
 </body>

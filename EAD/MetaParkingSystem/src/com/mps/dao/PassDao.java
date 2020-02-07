@@ -33,4 +33,44 @@ public class PassDao {
 		return rowsAffected;
 		
 	}
+	
+	public static Pass getPassDetails(int empId) {
+		Connection con = createConnection();
+		String query = "SELECT * FROM Pass where Eid = " + empId + ";";
+		Pass empPass = new Pass();
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next()) {
+				empPass.setPassType(rs.getString("PassType"));
+				empPass.setPrice(rs.getFloat("Price"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return empPass;
+	}
+	
+	public static boolean updatePass(Pass newPass, int empId) {
+		Connection con = createConnection();
+		String query = "UPDATE Pass set PassType = ?, Price = ? where Eid = ?";
+		boolean result = false;
+		int rowsAffected = 0;
+		try {
+			PreparedStatement st = con.prepareStatement(query);
+			
+			st.setString(1, newPass.getPassType());
+			st.setFloat(2, newPass.getPrice());
+			st.setInt(3, empId);
+			
+			rowsAffected = st.executeUpdate();
+			if (rowsAffected != 0) {
+				result = true;
+			}
+			System.out.println(rowsAffected + " rows affected.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

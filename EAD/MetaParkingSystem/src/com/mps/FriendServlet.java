@@ -24,10 +24,11 @@ public class FriendServlet extends HttpServlet {
 		int empId = EmployeeDao.getEmployeeId(emailId, password);
 		System.out.println(empId);
 		List<Employee> employees = EmployeeDao.searchFriends(empId);
-		PrintWriter out = response.getWriter();
-		for (Employee emp : employees) {
+		/*for (Employee emp : employees) {
 			out.println(emp.getEmpFirstName() + " " + emp.getEmpLastName() + " " + emp.getGender() + " " + emp.getEmailId() + " " + emp.getMobileNumber() + " " + emp.getOrgName());
-		}
+		}*/
+		session.setAttribute("friends", employees);
+		response.sendRedirect("friends.jsp");
 	}
 
 }
