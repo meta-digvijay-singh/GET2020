@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Metacube Parking System</title>
+    <link href="./ParkingSystem.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.4.2.min.js"
+  		integrity="sha256-4joqTi18K0Hrzdj/wGed9xQOt/UuHuur+CeogYJkPFk="
+  		crossorigin="anonymous">
+    </script>
+    <script src="controller.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id = "header">
+        <h1 id = "welcomeMessage">Welcome to Metacube Parking system.</h1>
+    </div>
+    <div id = "confirmationMessage">
+        <p id="showEmpId"></p>
+    </div>
+    <div id="registrationForm" class="styleDiv">
+        <p class = "formInfo">Registraion Details</p>
+        <form id = "regForm" action = "sendRegDetails" method = "post">
+            <input id="fullName" type="text" name="fullName" placeholder="FULL NAME" onkeyup = "validateFullName()">
+            <br>
+            <p id = "nameSuggestion" class = "suggestion">Full name should have length greater than 2.</p>
+            <label for="male">Gender</label>
+            <label>
+                <input id="male" type="radio" name="gender" value = "male">Male
+            </label>
+            <label>
+                <input id="female" type="radio" name="gender" value = "female">Female
+            </label>
+            <br>
+            <input id="emailId" type="email" name="emailId" placeholder="EMAIL ID" onkeyup = "validateEmail()">
+            <br>
+            <p id = "emailSuggestion" class = "suggestion">Email is not valid.</p>
+            <input id="password" type="password" name="password" placeholder="PASSWORD" onkeyup = "validatePassword()">
+            <br>
+            <p id = "passwordSuggestion" class = "suggestion">Password must have length greater than 8.</p>
+            <input id="confirmPassword" type="password" name="confirmPassword" placeholder="CONFIRM PASSWORD" onkeyup = "validateConfirmPassword()">
+            <br>
+            <p id = "confirmPasswordSuggestion" class = "suggestion">Confirm password is not same as Password.</p>
+            <input id="mobileNumber" type="text" name="mobileNumber" placeholder="MOBILE NUMBER" onkeyup = "validateMobileNumber()">
+            <br>
+            <p id = "mobileNumberSuggestion" class = "suggestion">Mobile number is not valid.</p>
+            <select id = "orgName" name = "orgName">
+                <option value = "Metacube">Metacube</option>
+                <option value = "Google">Google</option>
+                <option value = "Microsoft">Microsoft</option>
+            </select><br>
+            <input type="button" value="REGISTER" onclick="register()"><br>
+        </form>
+    </div>
+
+    <div id="vehicleForm" class="styleDiv">
+        <p class="formInfo">Vehicle Details</p>
+        <form action = "sendVehicleDetails" method = "post">
+        	<input id="dummyEmpId" type="text" name="dummyEmpId" value = "" disabled>
+            <br>
+            <input id="vehicleName" type="text" name="vehicleName" placeholder="VEHICLE NAME" onkeyup = "validateVehicleName()">
+            <br>
+            <p id = "vehicleNameSuggestion" class = "suggestion">Vehicle Name is not valid.</p>
+            <select id="vehicleType" name="typeOfVehicle">
+                <option value="Cycle">Cycle</option>
+                <option value="MotorCycle">MotorCycle</option>
+                <option value="FourWheelers">Four Wheelers</option>
+            </select><br>
+            <input id="vehicleNumber" type="text" name="vehicleNumber" placeholder="VEHICLE NUMBER" onkeyup = "validateVehicleNumber()">
+            <br>
+            <p id = "vehicleNumberSuggestion" class = "suggestion">Vehicle Number should have first two digits as letters, middle four digits anything and last four digits as numbers.</p>
+            <textarea id="identification" placeholder = "IDENTIFICATION"></textarea><br>
+            <input type="button" value="GO" onclick="showPassesPrice()">
+            <br>
+        </form>
+    </div>
+
+    <div id="currencyForm" class="styleDiv">
+        <p class="regMessage">Price details</p>
+        <form action = "sendPassDetails" method = "post">
+            <label>
+                <input id="dailyPrice" type="radio" name="price" value = "dailyPrice">Daily Pass -> 
+                <span id = "dailyPass"></span>
+                <span class = "unit"></span>
+            </label>
+            <br>
+            <label>
+                <input id="monthlyPrice" type="radio" name="price" value = "monthlyPrice">Monthly Pass -> 
+                <span id = "monthlyPass"></span>
+                <span class = "unit"></span>
+            </label>
+            <br>
+            <label>
+                <input id="yearlyPrice" type="radio" name="price" value = "yearlyPrice">Yearly Pass -> 
+                <span id = "yearlyPass"></span>
+                <span class = "unit"></span>
+            </label>
+            <br>
+            <select id="currencyType" name="typeOfCurrency" onchange = "convertPrice()">
+                <option value="YEN">YEN</option>
+                <option value="USD">USD</option>
+                <option value="INR">INR</option>
+            </select>
+            <input id = "login" type="button" value="Get Pass" onclick = "getPass()"><br>
+        </form>
+    </div>
+
+</body>
+
+</html>
