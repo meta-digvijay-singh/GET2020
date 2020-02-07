@@ -17,7 +17,7 @@ import com.metacube.demorestapi.repositories.InventoryRepository;
 @Path("inventory")
 public class InventoryResource {
 
-	InventoryRepository repo = new InventoryRepository();
+	private static InventoryRepository repo = new InventoryRepository();
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
