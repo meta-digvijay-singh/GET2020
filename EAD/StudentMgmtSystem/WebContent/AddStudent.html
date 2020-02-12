@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add New Student</title>
+<style>
+input{ margin:10px;
+}
+input,select{
+margin:2px;
+padding:2px;}
+</style>
+</head>
+<body>
+<form action="AddStudent" method="post">
+<h1>Enter Student Details</h1>
+	    <table>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" name="firstName" required></td>
+        </tr>
+        <tr>
+            <td>Last Name </td>
+            <td><input type="text" name="lastName"></td>
+        </tr>
+        <tr>
+            <td>Father's name</td>
+            <td><input type="text" name="fatherName" required></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="email" required></td>
+        </tr>
+         <tr>
+            <td>Age</td>
+            <td><input type="number" name="age" required></td>
+        </tr>
+        <tr>
+            <td>Class</td>
+            <td>
+        <select name="class">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+		</select>
+            </td>
+        </tr>
+        <tr>
+        <td></td>
+        <td><input type="submit" value = "Submit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
