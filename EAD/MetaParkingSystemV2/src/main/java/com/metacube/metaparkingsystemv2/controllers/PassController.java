@@ -2,16 +2,17 @@ package com.metacube.metaparkingsystemv2.controllers;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.metacube.metaparkingsystemv2.dtos.EmployeeDto;
-import com.metacube.metaparkingsystemv2.models.Employee;
 import com.metacube.metaparkingsystemv2.models.Pass;
 import com.metacube.metaparkingsystemv2.models.Vehicle;
 import com.metacube.metaparkingsystemv2.services.PassInfoService;
@@ -35,15 +36,19 @@ public class PassController {
 	}
 
 	@PostMapping("/addPass")
-	public String generatePass(@ModelAttribute("pass") Pass pass, Model model) {
-		Vehicle vehicle = vehicleService.getVehicleById(pass.getVehicleId());
-		String vehicleType = vehicle.getType();
-		String passType = pass.getPassType();
-		int passId = passInfoService.getPassId(vehicleType, passType);
-		vehicle.setPassId(passId);
-		System.out.println(vehicleService.updateVehicle(vehicle, pass.getVehicleId()));
-		model.addAttribute("employeeDto", new EmployeeDto());
-		return "login";
+	public String generatePass(@Valid @ModelAttribute("pass") Pass pass, Errors errors, Model model) {
+		if (errors.hasErrors()) {
+			return "pass";
+		} else {
+			Vehicle vehicle = vehicleService.getVehicleById(pass.getVehicleId());
+			String vehicleType = vehicle.getType();
+			String passType = pass.getPassType();
+			int passId = passInfoService.getPassId(vehicleType, passType);
+			vehicle.setPassId(passId);
+			System.out.println(vehicleService.updateVehicle(vehicle, pass.getVehicleId()));
+			model.addAttribute("employeeDto", new EmployeeDto());
+			return "redirect:login";
+		}
 	}
 
 	@GetMapping("/getPassDetails")
@@ -70,7 +75,8 @@ public class PassController {
 	}
 
 	@PostMapping("/editPass")
-	public String updateEmployeeDetails(@ModelAttribute("employee") Pass pass, HttpSession session) {
+	public String updateEmployeeDetails(@Valid @ModelAttribute("employee") Pass pass, Errors errors,
+			HttpSession session) {
 		int empId = (int) session.getAttribute("empId");
 		int vehicleId = vehicleService.getVehicleIdByEmpId(empId);
 		Vehicle vehicle = vehicleService.getVehicleById(vehicleId);

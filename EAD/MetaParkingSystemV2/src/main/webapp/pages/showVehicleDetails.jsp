@@ -15,7 +15,7 @@
 			<form:label path="vehicleName"></form:label>
 			<form:input path="vehicleName" type="text" placeholder="Vehicle Name"
 				class="form-control" />
-			<form:errors path="vehicleName"></form:errors>
+			<form:errors path="vehicleName" class="text-danger"></form:errors>
 		</div>
 		<div class="form-group">
 			<form:select class="custom-select" path="type">
@@ -23,19 +23,19 @@
 				<form:option value="motorcycle">Motorcycle</form:option>
 				<form:option value="fourWheelers">Four Wheelers</form:option>
 			</form:select>
-			<form:errors path="type"></form:errors>
+			<form:errors path="type" class="text-danger"></form:errors>
 		</div>
 		<div class="form-group">
 			<form:label path="vehicleNumber"></form:label>
 			<form:input path="vehicleNumber" type="text"
 				placeholder="Vehicle Number" class="form-control" />
-			<form:errors path="vehicleNumber"></form:errors>
+			<form:errors path="vehicleNumber" class="text-danger"></form:errors>
 		</div>
 		<div class="form-group">
 			<form:label path="identification"></form:label>
 			<form:textarea path="identification" placeholder="Identification"
 				class="form-control" />
-			<form:errors path="identification"></form:errors>
+			<form:errors path="identification" class="text-danger"></form:errors>
 		</div>
 		<form:hidden path="passId" value="${vehicle.passId}"
 			class="form-control" />

@@ -28,7 +28,7 @@
 			<option value="YEN">YEN</option>
 		</select>
 
-		<div class="alert alert-primary text-center">
+		<div class="alert alert-primary text-center" id="pass-div">
 			Pass Price : <span id="showPassPrice"></span>
 		</div>
 

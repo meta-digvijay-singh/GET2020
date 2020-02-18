@@ -9,5 +9,4 @@ public class MetaParkingSystemV2Application {
 	public static void main(String[] args) {
 		SpringApplication.run(MetaParkingSystemV2Application.class, args);
 	}
-
 }

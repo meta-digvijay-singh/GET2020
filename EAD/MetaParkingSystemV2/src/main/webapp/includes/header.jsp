@@ -10,18 +10,22 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 <style>
-	#showPassPrice {
-		display: hidden;
-	}
-	
-	form {
-		width: 400px;
-		margin: auto;
-	}
-	
-	.form-container {
-		padding: 30px;
-	}
+#showPassPrice {
+	display: hidden;
+}
+
+form {
+	width: 400px;
+	margin: auto;
+}
+
+.form-container {
+	padding: 30px;
+}
+
+#pass-div {
+	visibility: hidden;
+}
 </style>
 </head>
 <body>

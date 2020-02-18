@@ -19,6 +19,7 @@ function convertCurrency(passPrice) {
 }
 
 function updatePassPrice(vehicleType) {
+	document.getElementById("pass-div").style.visibility = "visible";
 	passTypeElement = document.getElementById("passType");
 	passType = passTypeElement.options[passTypeElement.selectedIndex].value;
 	if (vehicleType == "cycle") {

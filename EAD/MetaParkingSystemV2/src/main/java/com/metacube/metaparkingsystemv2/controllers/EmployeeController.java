@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,28 +35,45 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/registerEmployee")
-	public String registerEmployee(@ModelAttribute("employee") Employee employee, Model model) {
-		int employeeId = employeeService.addEmployee(employee);
-		model.addAttribute("vehicle", new Vehicle());
-		model.addAttribute("employeeId", employeeId);
-		return "vehicle";
+	public String registerEmployee(@Valid @ModelAttribute("employee") Employee employee, Errors errors, Model model) {
+		if (errors.hasErrors()) {
+			return "register";
+		} else {
+			String emailId = employee.getEmailId();
+			int empId = employeeService.getEmployeeId(emailId);
+			if (empId == -1) {
+				int employeeId = employeeService.addEmployee(employee);
+				model.addAttribute("vehicle", new Vehicle());
+				model.addAttribute("employeeId", employeeId);
+				return "vehicle";
+			} else {
+				model.addAttribute("alert", "This email is already registered :)");
+				return "redirect:login";
+			}
+		}
+
 	}
 
 	@PostMapping("/loginEmployee")
-	public String loginEmployee(@ModelAttribute("employeeDto") EmployeeDto employeeDto, HttpSession session) {
-		String emailId = employeeDto.getEmailId();
-		String password = employeeDto.getPassword();
-		int empId = employeeService.getEmployeeId(emailId);
-		if (empId == -1) {
-			return "redirect:login";
+	public String loginEmployee(@Valid @ModelAttribute("employeeDto") EmployeeDto employeeDto, Errors errors,
+			HttpSession session) {
+		if (errors.hasErrors()) {
+			return "login";
 		} else {
-			Employee employee = employeeService.getEmployeeById(empId);
-			if (employee.getEmailId().equals(emailId) && employee.getPassword().equals(password)) {
-				session.setAttribute("empId", employeeService.getEmployeeId(employeeDto.getEmailId()));
-				System.out.println(emailId + " " + password);
-				return "redirect:display";
-			} else {
+			String emailId = employeeDto.getEmailId();
+			String password = employeeDto.getPassword();
+			int empId = employeeService.getEmployeeId(emailId);
+			if (empId == -1) {
 				return "redirect:login";
+			} else {
+				Employee employee = employeeService.getEmployeeById(empId);
+				if (employee.getEmailId().equals(emailId) && employee.getPassword().equals(password)) {
+					session.setAttribute("empId", employeeService.getEmployeeId(employeeDto.getEmailId()));
+					System.out.println(emailId + " " + password);
+					return "redirect:display";
+				} else {
+					return "redirect:login";
+				}
 			}
 		}
 	}
@@ -73,11 +92,17 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/editEmployee")
-	public String updateEmployeeDetails(@ModelAttribute("employee") Employee employee, HttpSession session) {
-		int empId = (int) session.getAttribute("empId");
-		employee.setEmpId(empId);
-		employeeService.updateEmployee(empId, employee);
-		return "redirect:display";
+	public String updateEmployeeDetails(@Valid @ModelAttribute("employee") Employee employee, Errors errors,
+			HttpSession session) {
+		if (errors.hasErrors()) {
+			return "showEmployeeDetails";
+		} else {
+			int empId = (int) session.getAttribute("empId");
+			employee.setEmpId(empId);
+			employeeService.updateEmployee(empId, employee);
+			return "redirect:display";
+		}
+
 	}
 
 	@GetMapping("/getFriends")

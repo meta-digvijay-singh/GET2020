@@ -2,10 +2,12 @@ package com.metacube.metaparkingsystemv2.controllers;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,14 +35,18 @@ public class VehicleController {
 	}
 
 	@PostMapping("/addVehicle")
-	public String addVehicle(@ModelAttribute("vehicle") Vehicle vehicle, Model model) {
-		vehicle.setPassId(-1); // -1 represents that user does not have any pass.
-		int vehicleId = vehicleService.addVehicle(vehicle);
-		System.out.println("Vehicle Id : " + vehicleId);
-		model.addAttribute("vehicleType", vehicle.getType());
-		model.addAttribute("vehicleId", vehicleId);
-		model.addAttribute("pass", new Pass());
-		return "pass";
+	public String addVehicle(@Valid @ModelAttribute("vehicle") Vehicle vehicle, Errors errors, Model model) {
+		if (errors.hasErrors()) {
+			return "vehicle";
+		} else {
+			vehicle.setPassId(-1); // -1 represents that user does not have any pass.
+			int vehicleId = vehicleService.addVehicle(vehicle);
+			System.out.println("Vehicle Id : " + vehicleId);
+			model.addAttribute("vehicleType", vehicle.getType());
+			model.addAttribute("vehicleId", vehicleId);
+			model.addAttribute("pass", new Pass());
+			return "pass";
+		}
 	}
 
 	@GetMapping("/getVehicleDetails")
@@ -55,19 +61,23 @@ public class VehicleController {
 		} else {
 			return "redirect:login";
 		}
-
 	}
 
 	@PostMapping("/editVehicle")
-	public String updateVehicleDetails(@ModelAttribute("vehicle") Vehicle vehicle, HttpSession session) {
-		int empId = (int) session.getAttribute("empId");
-		System.out.println(empId);
-		int vehicleId = vehicleService.getVehicleIdByEmpId(empId);
-		String passType = passInfoService.getPassType(vehicle.getPassId());
-		int passId = passInfoService.getPassId(vehicle.getType(), passType);
-		vehicle.setPassId(passId);
-		System.out.println("vehicle id : " + vehicleId);
-		vehicleService.updateVehicle(vehicle, vehicleId);
-		return "redirect:display";
+	public String updateVehicleDetails(@Valid @ModelAttribute("vehicle") Vehicle vehicle, Errors errors,
+			HttpSession session) {
+		if (errors.hasErrors()) {
+			return "showVehicleDetails";
+		} else {
+			int empId = (int) session.getAttribute("empId");
+			System.out.println(empId);
+			int vehicleId = vehicleService.getVehicleIdByEmpId(empId);
+			String passType = passInfoService.getPassType(vehicle.getPassId());
+			int passId = passInfoService.getPassId(vehicle.getType(), passType);
+			vehicle.setPassId(passId);
+			System.out.println("vehicle id : " + vehicleId);
+			vehicleService.updateVehicle(vehicle, vehicleId);
+			return "redirect:display";
+		}
 	}
 }

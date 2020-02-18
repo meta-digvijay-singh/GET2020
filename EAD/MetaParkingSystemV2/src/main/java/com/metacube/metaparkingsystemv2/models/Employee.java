@@ -1,13 +1,33 @@
 package com.metacube.metaparkingsystemv2.models;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 public class Employee {
 	private int empId;
+
+	@Pattern(regexp = "^[a-zA-Z]{2,}\\s?[a-zA-Z]{2,}$", message = "Please enter valid Name")
 	private String fullName;
+
+	@NotNull
 	private String gender;
+
+	@NotBlank(message = "Please enter email id")
+	@Email(message = "Please enter valid email")
 	private String emailId;
+
+	@Pattern(regexp = "^[a-zA-Z0-9!@#$%^&*_-]{8,}$", message = "Please enter valid password")
 	private String password;
+
+	@Pattern(regexp = "^[a-zA-Z0-9!@#$%^&*_-]{8,}$", message = "Please enter valid confirm password")
 	private String confirmPassword;
+
+	@Pattern(regexp = "^[0-9]{10,15}", message = "Please enter valid contact number")
 	private String contactNumber;
+
+	@Pattern(regexp = "^[a-zA-Z0-9]{2,}$", message = "Please enter valid Org. Name")
 	private String orgName;
 	private int passId;
 

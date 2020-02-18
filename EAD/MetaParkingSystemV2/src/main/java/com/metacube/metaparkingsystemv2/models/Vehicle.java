@@ -1,10 +1,19 @@
 package com.metacube.metaparkingsystemv2.models;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 public class Vehicle {
 	private int vehicleId;
+
+	@Pattern(regexp = "^[a-zA-Z0-9]{2,}$", message = "Please enter valid vehicle name")
 	private String vehicleName;
 	private String type;
+
+	@Pattern(regexp = "^[a-zA-Z]{2}.{4}[0-9]{4}", message = "Please enter valid vehicle number")
 	private String vehicleNumber;
+
+	@NotBlank(message = "Please enter vehicle identification")
 	private String identification;
 	private int empId;
 	private int passId;
