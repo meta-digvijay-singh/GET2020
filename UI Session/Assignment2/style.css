@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    /*background: #673AB7;  /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to right, #512DA8, #673AB7);  /* Chrome 10-25, Safari 5.1-6 */  
+    /*background: linear-gradient(to right, #512DA8, #673AB7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    box-sizing: "border-box";
+}
+
+body {
+    font-family: "Libre Franklin", "sans-serif";
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#navigationBar {
+    width: 100%;
+    background: #4b6cb7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    box-shadow: 2px 2px 2px white;
+    position: fixed;
+    z-index: 1;
+}
+
+#navigation-items {
+    margin-left: 60%;
+    
+}
+
+.navigation-item {
+    display: inline-block;
+    border-radius: 2px;
+    margin: 2px 0;
+    border: none;
+    padding: 5px;
+    transition-duration: 500ms;
+    font-size: 0.6em;
+    background-color: #2c3e50;
+    padding: 10px 20px;
+    letter-spacing: 2px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#coverImage {
+    width: 100%;
+    height: 600px;
+    background: url("./singapore.jpg") center center fixed;
+    background-size: cover;
+    transition-duration: 500ms;
+    opacity: 0.85;
+}
+
+.region {
+    background-color: white;
+    display:inline-block;
+    width: 250px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 2px 5px 20px black;
+    padding: 40px 20px;
+    margin: 100px 70px;
+    border-bottom: 5px solid #6c5ce7;
+}
+
+input, textarea, select {
+    display: block;
+    margin: 20px;
+    width: 200px;
+    border: none;
+    border-bottom: 2px solid #6c5ce7;
+    outline: none;
+}
+
+input[type="radio"] {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 5px;
+}
+
+input[type="submit"] {
+    border: none;
+    width: 150px;
+}
+
+#mainSection, #pricingRegion {
+    background: #fff;
+    box-shadow: 1px 5px 20px #000;
+    width: 98%;
+    height: auto;
+    padding: 20px auto;
+    margin: 20px auto;
+    border-radius: 10px;
+    border-bottom: 5px solid #8e44ad;
+}
+
+.priceCard {
+    text-align: center;
+    display: inline-block;
+    width: 300px;
+    height: auto;
+    padding: 30px 10px;
+    margin: 30px 55px;
+    box-shadow: 1px 4px 5px #000;
+    border-radius: 10px;
+    border-bottom: 5px solid #c56cf0;
+    background-color: #fff;
+}
+
+.priceCard > .passInfo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 20px auto;
+    border: 2px solid #6c5ce7;
+}
+
+#passPrice, #passType {
+    position: relative;
+    top: 25px;
+}
+
+#passPrice {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.passTypeSelection p {
+    margin: 5px auto;
+}
+
+.button {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #4834d4;
+    box-shadow: 1px 5px 10px #000;
+}
+
+i {
+    font-size: 2em;
+}
+
+.fa-car {
+    color: #8e44ad;
+}
+
+.fa-bicycle {
+    color: #2ecc71;
+}
+
+.fa-motorcycle {
+    color: #bdc3c7;
+}
