@@ -1,0 +1,68 @@
+.employee-section, .vehicle-section, .pass-section {
+    margin-top: 50px;
+}
+
+.employee-section, .vehicle-section, .pass-section {
+    max-width: 400px;
+}
+
+input {
+    margin: 20px auto;
+}
+
+form > div {
+    display: none;
+}
+
+form > div:nth-child(1) {
+    display: block;
+}
+
+button {
+    margin-top: 20px;
+}
+
+input {
+    transition: 500ms;
+}
+
+.vehicle-section {
+    display: none;
+}
+
+.card {
+    width: 18rem;
+    margin: auto;
+}
+
+.card div {
+    margin: auto;
+}
+
+.pass-type {
+    margin: 20px auto;
+}
+
+.pass-price-section {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid blueviolet;
+    box-shadow: 1px 5px 10px #000;
+}
+
+.pass-price-section .pass-price{
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 25px;
+}
+
+.pass-price-section .pass-duration {
+    margin-top: 0;
+}
+
+#cycle, #motorcycle, #fourwheelers {
+    display: none;
+    margin-bottom: 50px;
+}
