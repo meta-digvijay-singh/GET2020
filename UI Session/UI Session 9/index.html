@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/de97263a08.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="#"><img src="./images/logo.png" alt="Logo" width="40px"></a>
+    </nav>
+    <div class="alert alert-success text-center" id="empId" role="alert">
+      </div>
+
+    <div class="container m-auto row d-flex justify-content-center">
+        <!-- Employee Section -->
+        <div class="employee-section" id="employee-form">
+            <h2>Employee registration form</h2>
+            <form>
+                <div class="form-group" id="employee-name">
+                    <p class="message"></p>
+                    <input type="text" id="input-field-1" placeholder="Your Name here..." class="form-control">
+                </div>
+                <div class="form-group" id="employee-email">
+                    <p class="message"></p>
+                    <input type="text" id="input-field-2" placeholder="Your Email here..." class="form-control">
+                </div>
+                <div class="form-group" id="employee-password">
+                    <p class="message"></p>
+                    <input type="text" id="input-field-3" placeholder="Your Password here..." class="form-control">
+                </div>
+                <div class="form-group" id="employee-confirm-password">
+                    <p class="message"></p>
+                    <input type="text" id="input-field-4" placeholder="Your Confirm Password here..."
+                        class="form-control">
+                </div>
+                <div class="form-group" id="employee-contact-number">
+                    <p class="message"></p>
+                    <input type="text" id="input-field-5" placeholder="Your Contact Number here..."
+                        class="form-control">
+                </div>
+                <div class="form-group" id="employee-gender">
+                    <p class="message"></p>
+                    <div id="input-field-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male"
+                                onclick="validateEmployeeDetails()">
+                            <label class="form-check-label" for="male">
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female"
+                                onclick="validateEmployeeDetails()">
+                            <label class="form-check-label" for="female">
+                                Female
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="other" value="other"
+                                onclick="validateEmployeeDetails()">
+                            <label class="form-check-label" for="other">
+                                Other
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="button"
+                        onclick="switchForm('employee-form', 'vehicle-form')">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Vehicle Section -->
+        <div class="vehicle-section" id="vehicle-form">
+            <h2>Vehicle registration form</h2>
+            <form>
+                <div class="form-group" id="vehicle-vehicle-name">
+                    <p class="message"></p>
+                    <input type="text" id="input-field-7" placeholder="Your Vehicle Name here..." class="form-control">
+                </div>
+                <div class="form-group" id="vehicle-vehicle-type">
+                    <p class="message"></p>
+                    <select name="vehicleType" id="input-field-8" class="form-control" onchange="showNextInputField()">
+                        <option value="none" selected>Choose Vehicle Type</option>
+                        <option value="cycle">Cycle</option>
+                        <option value="motorcycle">Motorcycle</option>
+                        <option value="fourwheelers">Fourwheelers</option>
+                    </select>
+                </div>
+                <div class="form-group" id="vehicle-vehicle-number">
+                    <p class="message"></p>
+                    <input type="text" id="input-field-9" placeholder="Your Vehicle Number here..."
+                        class="form-control">
+                </div>
+                <div class="form-group" id="vehicle-vehicle-identification">
+                    <p class="message"></p>
+                    <textarea name="identification" id="input-field-10" class="form-control"
+                        placeholder="Your Vehicle Identification here..."></textarea>
+                    <button type="button" class="btn btn-primary" onclick="showPassInfo()">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Pass Section -->
+        <div class="pass-section">
+            <div class="card bg-secondary" id="cycle">
+                <div class="card-header text-dark text-center">
+                    <h2><i class="fas fa-bicycle"></i></h2>
+                </div>
+                <div class="card-body">
+                    <div class="pass-price-section text-center">
+                        <p class="pass-price" id="pass-price-cycle"><span>5</span><span>$</span></p>
+                        <p class="pass-duration" id="pass-duration-cycle">/day</p>
+                    </div>
+                    <div class="pass-control-section">
+                        <div class="form-group">
+                            <select name="pass-type" class="pass-type form-control" onchange="updatePrice(this, 'pass-price-cycle', 'pass-duration-cycle')">
+                                <option value="daily">Daily</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>    
+                        </div>
+                        <div class="form-group">
+                            <div class="currency-change-section">
+                                <select name="currency-type" id="currency-converter-cycle" class="currency-type form-control" onchange="updateCurrency(this, 'pass-price-cycle', 'pass-duration-cycle')">
+                                    <option value="USD" selected>USD</option>
+                                    <option value="INR">INR</option>
+                                    <option value="YEN">YEN</option>
+                                </select>
+                                <button class="btn btn-primary">Pay</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-secondary" id="motorcycle">
+                <div class="card-header text-dark text-center">
+                    <h2><i class="fas fa-motorcycle"></i></h2>
+                </div>
+                <div class="card-body">
+                    <div class="pass-price-section text-center">
+                        <p class="pass-price" id="pass-price-motorcycle"><span>10</span><span>$</span></p>
+                        <p class="pass-duration" id="pass-duration-motorcycle">/day</p>
+                    </div>
+                    <div class="pass-control-section">
+                        <div class="form-group">
+                            <select name="pass-type" class="pass-type form-control" onchange="updatePrice(this, 'pass-price-motorcycle', 'pass-duration-motorcycle')">
+                                <option value="daily">Daily</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>    
+                        </div>
+                        <div class="form-group">
+                            <div class="currency-change-section">
+                                <select name="currency-type" id="currency-converter-cycle" class="currency-type form-control" onchange="updateCurrency(this, 'pass-price-motorcycle', 'pass-duration-motorcycle')">
+                                    <option value="USD" selected>USD</option>
+                                    <option value="INR">INR</option>
+                                    <option value="YEN">YEN</option>
+                                </select>
+                                <button class="btn btn-primary">Pay</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-secondary" id="fourwheelers">
+                <div class="card-header text-dark text-center">
+                    <h2><i class="fas fa-car"></i></h2>
+                </div>
+                <div class="card-body">
+                    <div class="pass-price-section text-center">
+                        <p class="pass-price" id="pass-price-fourwheelers"><span>20</span><span>$</span></p>
+                        <p class="pass-duration" id="pass-duration-fourwheelers">/day</p>
+                    </div>
+                    <div class="pass-control-section">
+                        <div class="form-group">
+                            <select name="pass-type" class="pass-type form-control" onchange="updatePrice(this, 'pass-price-fourwheelers', 'pass-duration-fourwheelers')">
+                                <option value="daily">Daily</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>    
+                        </div>
+                        <div class="form-group">
+                            <div class="currency-change-section">
+                                <select name="currency-type" id="currency-converter-cycle" class="currency-type form-control" onchange="updateCurrency(this, 'pass-price-fourwheelers', 'pass-duration-fourwheelers')">
+                                    <option value="USD" selected>USD</option>
+                                    <option value="INR">INR</option>
+                                    <option value="YEN">YEN</option>
+                                </select>
+                                <button class="btn btn-primary">Pay</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>
