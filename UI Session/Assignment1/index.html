@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Metacube Parking System</title>
+        <link href="./style.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        
+        <!-- Navigation bar -->
+        <div id="navigationBar">
+            <ul id="navigation-items">
+                <a href="#mainSection"><li class="navigation-item">ADD EMPLOYEE</li></a>
+                <a href="#mainSection"><li class="navigation-item">ADD VEHICLE</li></a>
+                <a href="#mainSection"><li class="navigation-item">GIVE FEEDBACK</li></a>
+                <a href="#pricingRegion"><li class="navigation-item">PRICING</li></a>
+            </ul>
+        </div>
+        
+        <!-- Cover Image -->
+        <div id="coverImage">
+           
+            
+        </div>
+
+        <div id="mainSection">
+            
+            <!-- Employee Region -->
+            <div class="region" id="employeeRegion">
+                <h2>Employee Details</h2>
+                <form action="/addEmployee" method="post">
+                    <input type="text" name="fullName" id="fullName" placeholder="Full Name">
+                    <input type="radio" name="gender" id="male"><label for="male">Male</label>
+                    <input type="radio" name="gender" id="female"><label for="female">female</label>
+                    <input type="email" name="emailId" id="emailId" placeholder="Email Id">
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
+                    <input type="tel" name="contactNumber" id="contactNumber" placeholder="Contact Number">
+                    <input type="submit" value="Add Employee" class="button">
+                </form>
+
+            </div>
+
+            <!-- Vehicle Region -->
+            <div class="region" id="vehicleRegion">
+                <h2>Vehicle Details</h2>
+                <form action="/addVehicle" method="post">
+                    <input type="text" name="vehicleMake" id="vehicleMake" placeholder="Vehicle Make">
+                    <input type="text" name="vehicleModel" id="vehicleModel" placeholder="Vehicle Model">
+                    <select name="vehicleType" id="vehicleType">
+                        <option value="none" selected>Choose vehicle type</option>
+                        <option value="cycle">Cycle</option>
+                        <option value="motorCycle">Motor Cycle</option>
+                        <option value="fourWheelers">Four Wheelers</option>
+                    </select>
+                    <input type="text" name="vehicleNumber" id="vehicleNumber" placeholder="Vehicle Number">
+                    <input type="number" name="employeeId" id="employeeId" placeholder="Employee Id" disabled>
+                    <textarea name="vehicleIdentification" id="vehicleIdentification" placeholder="identification"></textarea>
+                    <input type="submit" value="Add Vehicle" class="button">
+                </form>
+
+            </div>
+            
+            <!-- Feedback Region -->
+            <div class="region" id="feedbackRegion">
+                <h2>Suggest Us</h2>
+                <form action="/giveFeedback" method="post">
+                    <input type="text" name="personName" id="personName" placeholder="Full Name">
+                    <input type="email" name="personEmailId" id="personEmailId" placeholder="Email Id">
+                    <input type="text" name="feedbackSubject" id="feedbackSubject" placeholder="Subject">
+                    <textarea name="feedbackWords" id="feedbackSuggestion" placeholder="your words goes here..."></textarea>
+                    <input type="submit" value="Post Feedback" class="button">
+                </form>
+
+            </div>
+        </div>
+        
+        <!-- Pricing Region -->
+        <div id="pricingRegion">
+                
+            <div class="priceCard" id="cycle">
+
+                <div class="passHead">
+                    <h2><i class="fas fa-bicycle"></i></h2>
+                </div>
+                <div class="passInfo">
+                    <p id="passPrice">100$</p>
+                    <p id="passType">/month</p>
+                </div>
+                <div class="passTypeSelection">
+                    <p id="day_cycle">Daily $5</p>
+                    <p id="month_cycle">Monthly $100</p>
+                    <p id="year_cycle">Yearly $500</p>
+                </div>
+                <p><a href="" class="button">Purchase Now</a></p>
+
+            </div>
+
+            <div class="priceCard" id="motorCycle">
+
+                <div class="passHead">
+                    <h2><i class="fas fa-motorcycle"></i></h2>
+                </div>
+                <div class="passInfo">
+                    <p id="passPrice">200$</p>
+                    <p id="passType">/month</p>
+                </div>
+                <div class="passTypeSelection">
+                    <p id="day_motorcycle">Daily $100</p>
+                    <p id="month_motorcycle">Monthly $200</p>
+                    <p id="year_motorcycle">Yearly $1000</p>
+                </div>
+                <p><a href="" class="button">Purchase Now</a></p>
+                
+            </div>
+
+            <div class="priceCard" id="fourWheelers">
+
+                <div class="passHead">
+                    <h2><i class="fas fa-car"></i></h2>
+                </div>
+                <div class="passInfo">
+                    <p id="passPrice">500$</p>
+                    <p id="passType">/month</p>
+                </div>
+                <div class="passTypeSelection">
+                    <p id="day_fourwheelers">Daily $200</p>
+                    <p id="month_fourwheelers">Monthly $500</p>
+                    <p id="year_fourwheelers">Yearly $3500</p>
+                </div>
+                <p><a href="" class="button">Purchase Now</a></p>
+                
+            </div>
+
+        </div>
+
+        <div id="footer">
+
+        </div>
+        <script src="https://kit.fontawesome.com/de97263a08.js" crossorigin="anonymous"></script>
+    </body>
+</html>

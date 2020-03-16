@@ -1,0 +1,80 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #nameWiseSearch {
+            visibility: hidden;
+        }
+        
+        #classWiseSearch {
+            visibility: hidden;
+        }
+    </style>
+    <script>
+        function search() {
+            var searchType = document.getElementsByName('name');
+            for (i = 0; i < searchType.length; i++) {
+                if (searchType[i].checked) {
+                    if (searchType[i].value == "namewise") {
+                        document.getElementById('nameWiseSearch').style.visibility = "visible"
+                        document.getElementById('show').style.visibility = "hidden";
+                        document.getElementById('classWiseSearch').style.visibility = "hidden"
+                    } else {
+                        document.getElementById('classWiseSearch').style.visibility = "visible";
+                        document.getElementById('nameWiseSearch').style.visibility = "hidden";
+                        document.getElementById('show').style.visibility = "hidden";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="show">
+        <h2>Select the option by which you want to search</h2>
+        <table>
+            <tr>
+                <td>Name Wise<input type="radio" name="name" value="namewise" id="name"></td>
+                <td>Class Wise <input type="radio" name="name" id="class" value="classwise"></td>
+                <td><button type="submit" onclick="search()">Go</button></td>
+            </tr>
+            <tr></tr>
+        </table>
+    </div>
+    <div id="nameWiseSearch">
+        <form action="SearchViaName" method="post">
+            <label>First Name</label> <input type="text" name="firstName"> &nbsp;
+            <label>Last Name</label> <input type="text" name="lastName"> &nbsp;
+            <input type="submit" value="Search">
+        </form>
+
+        <div id="classWiseSearch">
+            <form action="SearchViaClass" method="post">
+                <label>Select Class</label>
+                <select name="class">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                 <input type="submit" value="Search">
+                
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

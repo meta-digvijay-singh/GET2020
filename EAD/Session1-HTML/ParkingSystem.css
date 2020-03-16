@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Serif', serif;
+}
+
+body {
+    background: #fc00ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #00dbde, #fc00ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #00dbde, #fc00ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+h1 {
+    text-align: center;
+}
+
+#registrationConfirmation {
+    text-align: center;
+}
+
+form {
+    width: 300px;
+}
+
+label {
+    display: block;
+}
+
+input {
+    width: 300px;
+}
+
+select {
+    width: 300px;
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+input[type = "radio"] {
+    width: 20px;
+}
+
+input[type = "button"] {
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    color: white;
+    font-style: bold;
+    font-style: serif;
+    box-shadow: 5px 5px 10px black;
+    margin-left: 100px;
+    border: none;
+    background-color: #7711ff;
+}
+
+input[type = "button"]:hover {
+    box-shadow: 2px 2px 5px black;
+    border-bottom: 2px solid #00dbde;
+    border-top: 2px solid #00dbde;
+}
+
+#registrationForm {
+    width: 300px;
+    margin: auto;
+    padding: 70px;
+}
+
+.styleDiv {
+    background: #83a4d4;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #b6fbff, #83a4d4);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #b6fbff, #83a4d4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px black;
+    display: block;
+}
+
+#vehicleForm {
+    width: 300px;
+    margin: 20px auto;
+    padding: 50px;
+}
+
+.regMessage {
+    margin: 10px;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+}
+
+input[type = "text"], input[type = "password"], input[type = "email"], select, textarea {
+    border: none;
+    border-bottom: 2px solid rgba(168, 9, 241, 0.945);
+    background: none;
+    outline: none;
+}
+
+#currencyForm {
+    display: none;
+    width: 300px;
+    margin: 20px auto;
+    padding: 30px;
+}
+
+#changePrice {
+    margin: 10px auto;
+}
