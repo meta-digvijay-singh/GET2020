@@ -66,3 +66,14 @@ input {
     display: none;
     margin-bottom: 50px;
 }
+.redBorder:focus {
+    border: 2px solid red;
+}
+
+.greenBorder:focus  {
+    border: 2px solid green;
+}
+
+.orangeBorder:focus {
+    border: 2px solid orange;
+}
