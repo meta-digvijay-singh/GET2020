@@ -41,7 +41,7 @@ public class PolishNotation {
      * @return post-fix expression.
      * @throws Exception
      */
-    public int convertInfixToPostfix(String expression) throws Exception {
+    private String convertInfixToPostfix(String expression) throws Exception {
         Stack stack = new StackImpl();
         expression += " )";
         String[] tokens = expression.split(" ");
@@ -72,15 +72,17 @@ public class PolishNotation {
                 break;
             }
         }
-        return evaluateExpression(result.trim());
+        return result.trim();
     }
     
     /**
-     * Evaluate the given post-fix expression.
-     * @param postfixExpression : post-fix expression.
+     * Evaluate the given infix expression.
+     * @param infixExpression : in-fix expression.
      * @return result after evaluating the expression.
+     * @throws Exception 
      */
-    public int evaluateExpression(String postfixExpression) {
+    public int evaluateExpression(String infixExpression) throws Exception {
+        String postfixExpression = convertInfixToPostfix(infixExpression);
         postfixExpression += " )";
         String[] tokens = postfixExpression.split(" ");
         Stack stack = new StackImpl();
